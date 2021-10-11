@@ -82,6 +82,9 @@ conda install -y -c anaconda ipykernel
 echo installing scipy... 
 call conda install -y -c anaconda scipy
 
+echo installing statsmodels...
+call conda install -y -c conda-forge statsmodels
+
 echo installing jupyter notebook... 
 call conda install -y -c conda-forge notebook
 
