@@ -105,25 +105,5 @@ call conda install -y -c conda-forge xlsxwriter
 
 echo setup complete
 
-if 1==0 (
-
-
-	::-------- Install various packages --------
-	:: -y to assume Yes when asked for confirmation
-:: seaborn automatically loads pandas, python, scipy, numpy
-	conda install -y seaborn
-	conda install -y numpy
-	conda install -y pandas 
-	conda install -y scikit-learn
-	:: -c to search the following channel for the package
-	conda install -y -c anaconda scipy; 
-	conda install -y -c anaconda openpyxl;
-	conda install -y -c conda-forge jupyterlab; 
-	conda install -y -c conda-forge matplotlib
-	conda install -y -c conda-forge xlsxwriter;
-conda install -y -c plotly plotly;
-	
-
-)
 echo <<<END>>>
 pause
