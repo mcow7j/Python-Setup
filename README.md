@@ -8,7 +8,7 @@ To install packages you can’t be connected to the VPN or the CACI network as s
 #### Step 1  
 You can install MiniConda from <a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank">here</a> using the appropriate link (generally you will want 64-bit latest version for windows however some people have been having issues with Python 3.9).
 #### Step 2 
-- Download from this link here or Copy the text at bottom of this readme and save as a .bat script to a place locally on your computer.
+- Download from this link <a href="https://docs.conda.io/en/latest/miniconda.html" download>here</a> or Copy the text at bottom of this readme and save as a .bat script to a place locally on your computer.
 - Right-click on it and edit with an editor e.g notepad
 - Edit the file path on line 24 so it points at the folder of MiniConda stored on your computer e.g for me it is C:\Users\mcowley\Miniconda3.
 - (optional) You can edit the name of the environment you create on lines 49 and 56. By default it is called ds_test.
