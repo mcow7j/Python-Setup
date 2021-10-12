@@ -9,7 +9,7 @@ To install packages you can’t be connected to highly secure networks as securi
 #### Step 1  
 You can install MiniConda from <a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank">here</a> using the appropriate link (generally you will want 64-bit latest version for windows however some people have been having issues with Python 3.9).
 #### Step 2 
-- Dwonlaod the batch script stored in <a href="https://github.com/mcow7j/Python-Setup/blob/main/setup_selco_python_env%20v0.2.bat" download>here</a> to a place locally on your computer.
+- Downlaod the batch script stored in <a href="https://github.com/mcow7j/Python-Setup/blob/main/setup_python_env%20v0.4.bat" download>here</a> to a place locally on your computer.
 - Now run the file. To do this double left click on the copied file in file explorer.
 - Enter all the things it asks you for. You might have to do some exploring in file explorer to find where your Miniconda is stored on your computer e.g for me it is C:\Users\mcowley\Miniconda3.
 #### Step 3 (optional)
