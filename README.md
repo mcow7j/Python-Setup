@@ -1,8 +1,6 @@
 
 
 # Python-Setup
-https://github.com/deepbag/git-cloud-storage/blob/gh-pages/Deep%20Bag%20CV.pdf
-https://deepbag.github.io/git-cloud-storage/Deep%20Bag%20CV.pdf
 
 <a href="https://github.com/mcow7j/Python-Setup/blob/main/setup_python_env%20v0.4.bat" target="_blank" />here</a> 
 <a href="https://mcow7j.github.io/Python-Setup/setup_python_env%20v0.4.bat" target="_blank" />here</a> 
