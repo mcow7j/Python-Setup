@@ -2,9 +2,6 @@
 
 # Python-Setup
 
-<a href="https://github.com/mcow7j/Python-Setup/blob/main/setup_python_env%20v0.4.bat" target="_blank" />here</a> 
-<a href="https://mcow7j.github.io/Python-Setup/setup_python_env%20v0.4.bat" target="_blank" />here</a> 
-
 Sometimes you might want to have your own local version of Python so you can use packages not installed on the Jupyterhub.
 Miniconda provides a reliable and easy way to install and manage python on your computer.
 To install packages you can’t be connected to highly secure networks as security measures stop you connecting to the online library’s which store the packages.  
