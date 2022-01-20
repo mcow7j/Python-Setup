@@ -5,6 +5,7 @@
 :: for Selco ofrecasting in 2021
 ::---------------------------------------------------------
 :: History:
+:: V0.5 2021-10-13 MC: added more package bundles
 :: V0.4 2021-10-11 MC: Asks user to input variables
 :: V0.3 2021-10-11 MC: Altered to make editing easier and install different ENVIRONMENTS.
 :: V0.2 2021-10-08 MC: Altered to install all standard packages.
@@ -47,7 +48,7 @@ set /p env_name="Enter Enviroment name and press Enter: "
 
 
 :: which set of packages you want to install (choose from default, forecasting,
-:: image_labs, ds_hardcore)
+:: image_labs, ds_hardcore, sql_test, nltk_lab)
 :: set packages_bundle=default
 
 echo.
@@ -55,9 +56,9 @@ echo ----- set packages_bundle -----
 echo.
 echo enter which set of packages you want to install.
 echo.
-echo current options are: default, forecasting,image_labs, ds_hardcore
+echo current options are: default, forecasting,image_labs, ds_hardcore,sql_test, nltk_lab
 echo.
-echo (I recommend)
+echo (if in doubt use default)
 echo.
 set /p packages_bundle="Enter Packages Bundle and press Enter: "
 echo ----- set env_name  -----
@@ -141,10 +142,12 @@ call conda info -e
 echo.
 
 pause
+echo will now install a package to test everything is working
 echo Installing numpy...
 call conda install -y numpy
 echo should have installed numpy (check messages above to check)
-echo To install more packages press any key
+echo To install all base packages press any button.
+echo The first time you do this can take a while (15minsish)
 pause
 
 echo installing pandas...
@@ -174,10 +177,13 @@ call conda install -y -c conda-forge matplotlib
 echo installing plotly...
 call conda install -y -c plotly plotly
 
+echo installing pyreadstat (used for reading sas files)...
+call conda install -y -c conda-forge pyreadstat
+
 echo installing pyarrow (used for feather format)...
 call conda install -y -c conda-forge pyarrow
 
-echo finished installing all base packages check for errors
+echo --- finished installing all base packages check for errors ---
 pause
 
 if %packages_bundle%==default (
@@ -200,7 +206,6 @@ echo installing xlsxwriter...
 call conda install -y -c conda-forge xlsxwriter
 
 echo finished installing ms office packages
-pause
 )
 
 if  %packages_bundle%==forecasting (
@@ -224,7 +229,6 @@ call conda install -y -c conda-forge fbprophet
 echo finished installing forecasting packages
 echo check above for installation errors especially fbprophet
 
-pause
 )
 
 if  %packages_bundle%==image_labs (
@@ -247,8 +251,13 @@ call conda install -y -c conda-forge rasterio
 echo installing  pytorch...
 call conda install pytorch torchvision torchaudio cudatoolkit=10.2 -y -c pytorch
 
+echo installing  ipyleaflet...
+call conda install -y -c conda-forge ipyleaflet
+
+echo installing  tqdm...
+call conda install -y -c conda-forge tqdm
+
 echo finished installing image_labs packages
-pause
 )
 
 if  %packages_bundle%==ds_hardcore (
@@ -269,7 +278,36 @@ echo installing  pytorch...
 call conda install pytorch torchvision torchaudio cudatoolkit=10.2 -y -c pytorch
 
 echo finished installing ds_hardcore packages
-pause)
+)
+
+if %packages_bundle%==sql_test (
+
+echo press any button to install sql_test specific packages
+pause
+
+echo installing  psycopg2...
+call conda install -y -c conda-forge psycopg2
+
+
+echo.
+echo all sql packages installed
+)
+
+if %packages_bundle%==nltk_lab (
+
+echo press any button to install nltk_lab specific packages
+pause
+
+echo installing downgraded version of scipy...
+call conda install -y -c conda-forge scipy=1.6.1
+
+echo installing nltk...
+call conda install -y -c conda-forge nltk
+
+echo.
+echo all nltk packages installed
+)
+
 
 echo session complete. "%env_name%" enviroment setup. press any button to shut prompt.
 pause
