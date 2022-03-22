@@ -1,4 +1,4 @@
-::---------------------------------------------------------
+:---------------------------------------------------------
 ::-------- setup_selco_python_env 					-------
 ::---------------------------------------------------------
 :: Batch file to setup a conda Python environment
@@ -312,3 +312,4 @@ echo all nltk packages installed
 echo session complete. "%env_name%" enviroment setup. press any button to shut prompt.
 pause
 echo <<<END>>>
+
