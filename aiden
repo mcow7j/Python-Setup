@@ -1,0 +1,62 @@
+def pcformat(orig_pc):
+    'Rearange postcode into CACI format. Expects a string'
+
+    if orig_pc == None:
+        return None
+
+    pc = orig_pc.replace(' ','').upper()
+
+    length = len(pc)
+    inward = orig_pc[-3:].upper()
+
+    #If either of these is true then return the the input postcode unchanged
+    chklen = (length<5) | (length > 7)
+    chkchar = (inward[0:1] == ' ') | (inward[1:2] == ' ')
+
+    # compile regular expressions for separating out numbers and letters
+    #rx_num = re.compile('[0-9]+')     # all numbers, + means one or more digits
+    rx_char = re.compile('[a-zA-Z]*')
+
+    #set up characters to be translated 
+    transpc1 = str.maketrans('OIZS', '0125')
+    transpc2 = str.maketrans('OIZ', '012')
+    transpc3 = str.maketrans('CIKMOV0125', 'GLXNDUDLZS')
+
+
+    if chklen or chkchar:
+        return orig_pc[0:8]  # replicate sas, in the hope that too long postcodes have an extra unnecessary character at the end
+    else:
+        lencompr_m3 = pc.__len__()-3
+
+        #separate out the outward code 
+        outward1 = pc[0:lencompr_m3]
+
+        #prepare for formatting the outward code
+        len_outcode = outward1.__len__()
+        char_match = rx_char.match(outward1)
+
+        #format the outward code
+        if char_match:
+            out1 = rx_char.findall(outward1)[0] #the first characters 
+            out2 = outward1.replace(out1,'',1)    #the rest of outward code - replaces only the first occurence so if outward1=W1W then out2=1W, not just 1
+
+            if len_outcode == 2:
+                outward = out1 + '  ' + out2
+            elif len_outcode == 3: #when 3 always the first letter(s) + one space + the rest (possible cases E11 EB1 E1W)
+                outward = out1 + ' ' + out2
+            elif len_outcode == 4:  # Split to deal with cases like B32N 0AA - the else will get rid of the N in the middle
+                if out1.__len__() == 1:
+                    outward = out1 + ' ' + out2[0:2]
+                else:
+                    outward = outward1
+
+        #substitute wrong characters
+        if outward != "W 1S":
+            outpcode = outward[0:2] + outward[2:3].translate(transpc1) + outward[3:4].translate(transpc1) + " " + \
+                    inward[0:1].translate(transpc1) + inward[1:2].translate(transpc3) + inward[2:3].translate(transpc3)
+        else:
+            outpcode = outward[0:2] + outward[2:3].translate(transpc1) + outward[3:4].translate(transpc2) + " " + \
+                    inward[0:1].translate(transpc1) + inward[1:2].translate(transpc3) + inward[2:3].translate(transpc3)
+
+        #return the formated postcode
+        return  outpcode
